@@ -25,7 +25,7 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background">
       <Card className="max-w-3xl w-full p-6 md:p-10 shadow-lg">
         <div className="space-y-8">
           {/* Progress indicator */}

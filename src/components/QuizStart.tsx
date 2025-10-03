@@ -8,7 +8,7 @@ interface QuizStartProps {
 
 const QuizStart = ({ onStart }: QuizStartProps) => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background">
       <Card className="max-w-2xl w-full p-8 md:p-12 shadow-lg">
         <div className="text-center space-y-6">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/70 mb-4">
