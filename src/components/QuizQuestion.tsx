@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
+// 1. Importar motion e AnimatePresence
+import { motion, AnimatePresence } from "framer-motion";
 
 interface QuizQuestionProps {
   question: string;
@@ -9,6 +11,22 @@ interface QuizQuestionProps {
   questionNumber: number;
   totalQuestions: number;
 }
+
+// Variantes para animar as opções em sequência
+const optionsContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1, // Atraso de 0.1s entre cada opção
+    },
+  },
+};
+
+const optionItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 
 const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuestions }: QuizQuestionProps) => {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
@@ -25,36 +43,53 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
   };
 
   return (
+    // Esta parte do layout continua exatamente a mesma
     <div className="min-h-screen flex items-center justify-center p-4 bg-background">
-      <Card className="max-w-3xl w-full p-6 md:p-10 shadow-lg">
-        <div className="space-y-8">
-          {/* Progress indicator */}
+      <Card className="max-w-3xl w-full p-6 md:p-10 shadow-xl">
+        {/* 2. Adicionamos uma key aqui para que a animação reinicie a cada nova pergunta */}
+        <motion.div
+          key={questionNumber}
+          className="space-y-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Barra de Progresso */}
           <div className="space-y-2">
-            <div className="flex justify-between items-center text-sm text-muted-foreground">
-              <span>Pergunta {questionNumber} de {totalQuestions}</span>
-              <span>{Math.round((questionNumber / totalQuestions) * 100)}%</span>
-            </div>
             <div className="h-2 bg-muted rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-500 ease-out"
-                style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
+              <motion.div 
+                className="h-full bg-gradient-to-r from-primary to-secondary"
+                initial={{ width: `${((questionNumber - 1) / totalQuestions) * 100}%` }}
+                animate={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               />
             </div>
           </div>
 
-          {/* Question */}
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
-              {question}
-            </h2>
-          </div>
+          {/* Pergunta */}
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+            className="text-2xl md:text-3xl font-bold text-foreground leading-tight"
+          >
+            {question}
+          </motion.h2>
 
-          {/* Options */}
-          <div className="space-y-3">
+          {/* Opções */}
+          <motion.div
+            className="space-y-3"
+            variants={optionsContainerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {options.map((option) => (
-              <button
+              <motion.button
                 key={option.label}
+                variants={optionItemVariants}
                 onClick={() => handleSelect(option.value)}
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.98 }}
                 className={`w-full p-5 rounded-lg border-2 text-left transition-all hover:shadow-md ${
                   selectedOption === option.value
                     ? "border-primary bg-primary/5 shadow-md"
@@ -68,7 +103,11 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
                       : "border-muted-foreground/30"
                   }`}>
                     {selectedOption === option.value && (
-                      <div className="w-3 h-3 bg-primary-foreground rounded-full" />
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="w-3 h-3 bg-primary-foreground rounded-full" 
+                      />
                     )}
                   </div>
                   <div className="flex-1">
@@ -76,20 +115,32 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
                     <span className="text-foreground">{option.text}</span>
                   </div>
                 </div>
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
-          {/* Continue button */}
-          <Button
-            onClick={handleContinue}
-            disabled={selectedOption === null}
-            size="lg"
-            className="w-full md:w-auto px-8 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all"
-          >
-            Continuar
-          </Button>
-        </div>
+          {/* Botão Continuar */}
+          <div className="h-20 flex items-end justify-start"> {/* Container para evitar pulo de layout */}
+            <AnimatePresence>
+              {selectedOption !== null && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                >
+                  <Button
+                    onClick={handleContinue}
+                    disabled={selectedOption === null}
+                    size="lg"
+                    className="w-full md:w-auto px-8 py-6 text-lg font-semibold shadow-lg transition-all"
+                  >
+                    Continuar
+                  </Button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </Card>
     </div>
   );
