@@ -96,7 +96,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                 className="text-lg text-foreground/80"
               >
                 Em <span className="font-bold text-primary">9 perguntas</span>,
-                vamos iluminar o caminho para você alcançar seu verdadeiro potencial.
+                vamos descobrir quais das 3 chaves acima vai destravar o seu verdadeiro potencial.
               </motion.p>
 
               <motion.div
