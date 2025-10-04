@@ -10,7 +10,10 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  base: '/',
+  
+  // --- A MUDANÇA É APENAS NESTA LINHA ---
+  base: mode === 'production' ? '/trindade-solver-quiz/' : '/',
+  
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
