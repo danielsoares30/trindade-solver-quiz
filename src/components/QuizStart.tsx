@@ -93,7 +93,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                 variants={itemVariants}
                 className="text-lg text-foreground/80"
               >
-                Existe uma ordem oculta na Tríade do Tempo… e você só precisa de <span className="font-bold text-primary">9 respostas</span> para revelar A SUA.
+                Existe uma ordem oculta na Tríade do Tempo… e você só precisa de <span className="font-bold text-primary"><br />9 respostas</span> para revelar A SUA.
               </motion.p>
 
               <motion.div
