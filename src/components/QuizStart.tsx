@@ -93,7 +93,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                 variants={itemVariants}
                 className="text-lg text-foreground/80"
               >
-                <span className="font-bold text-primary">9 perguntas</span> que revelam se você controla o tempo… <br />ou se o tempo controla você.
+                Existe uma ordem oculta na Tríade do Tempo… e você só precisa de <span className="font-bold text-primary">9 respostas</span> para revelar A SUA.
               </motion.p>
 
               <motion.div
