@@ -95,8 +95,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                 variants={itemVariants}
                 className="text-lg text-foreground/80"
               >
-                Em <span className="font-bold text-primary">9 perguntas</span>,
-                vamos descobrir quais das 3 chaves acima vai destravar o seu verdadeiro potencial.
+                <span className="font-bold text-primary">9 perguntas</span> que revelam se você controla o tempo… ou se o tempo controla você.
               </motion.p>
 
               <motion.div
