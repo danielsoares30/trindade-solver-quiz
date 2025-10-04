@@ -95,7 +95,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                 variants={itemVariants}
                 className="text-lg text-foreground/80"
               >
-                <span className="font-bold text-primary">9 perguntas</span> que revelam se você controla o tempo… ou se o tempo controla você.
+                <span className="font-bold text-primary">9 perguntas</span> que revelam se você controla o tempo… <br />ou se o tempo controla você.
               </motion.p>
 
               <motion.div
