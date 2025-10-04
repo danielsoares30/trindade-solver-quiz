@@ -3,17 +3,13 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  
-  // --- A MUDANÇA É APENAS NESTA LINHA ---
-  base: mode === 'production' ? '/trindade-solver-quiz/' : '/',
-  
+  // A propriedade 'base' foi removida. O padrão '/' é o correto para a Vercel.
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
