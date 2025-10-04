@@ -54,7 +54,7 @@ const dotVariants: Variants = {
 };
 
 
-const TransitionScreen = ({ title, subtitle, onContinue, duration = 5000 }: TransitionScreenProps) => {
+const TransitionScreen = ({ title, subtitle, onContinue, duration = 7000 }: TransitionScreenProps) => {
   // A lógica de duração permanece intacta
   useEffect(() => {
     const timer = setTimeout(() => {
