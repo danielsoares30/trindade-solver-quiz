@@ -54,7 +54,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
               variants={itemVariants}
               className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent !leading-tight"
             >
-              Qual é a chave que destrava seu próximo nível?
+              Qual é a chave que abre seu próximo nível?
             </motion.h1>
 
             {/* Container para os pilares com animação própria */}
