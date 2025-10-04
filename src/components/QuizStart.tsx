@@ -47,9 +47,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
         <Card className="p-8 md:p-12 shadow-2xl shadow-primary/10">
           <div className="text-center space-y-8">
             <motion.div variants={itemVariants}>
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/70 mb-4 shadow-lg">
-                <Sparkles className="w-10 h-10 text-primary-foreground" />
-              </div>
+              
             </motion.div>
 
             <motion.h1
@@ -122,7 +120,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                 variants={itemVariants}
                 className="text-sm text-muted-foreground pt-2"
               >
-                ☕ Um café e uma descoberta sobre você
+              
               </motion.p>
             </div>
           </div>
