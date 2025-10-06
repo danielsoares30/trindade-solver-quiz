@@ -15,7 +15,7 @@ interface Question {
 const questions: Question[] = [
   // BLOCO 1 - Execução
   {
-    text: "Como você descreveria o início do seu dia de trabalho?",
+    text: "Como você descreveria o início do seu dia?",
     options: [
       { label: "A", text: "Sou reativo(a) e apago incêndios o dia todo, sem focar no que importa.", value: 1 },
       { label: "B", text: "Tenho um plano, mas as urgências e interrupções sempre vencem.", value: 2 },

@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
-// 1. Importar motion e AnimatePresence
 import { motion, AnimatePresence } from "framer-motion";
 
 interface QuizQuestionProps {
@@ -17,7 +16,7 @@ const optionsContainerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1, // Atraso de 0.1s entre cada opção
+      staggerChildren: 0.1,
     },
   },
 };
@@ -42,11 +41,18 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
     }
   };
 
+  // --- INÍCIO DA ALTERAÇÃO ---
+
+  // 1. Lógica para definir a cor da barra de progresso
+  const progressBarColor = questionNumber <= 3
+    ? "bg-gradient-to-r from-primary to-secondary" // Azul para perguntas 1 a 3
+    : "bg-gradient-to-r from-orange-500 to-amber-400"; // Laranja para as demais
+
+  // --- FIM DA ALTERAÇÃO ---
+
   return (
-    // Esta parte do layout continua exatamente a mesma
     <div className="min-h-screen flex items-center justify-center p-4 bg-background">
       <Card className="max-w-3xl w-full p-6 md:p-10 shadow-xl">
-        {/* 2. Adicionamos uma key aqui para que a animação reinicie a cada nova pergunta */}
         <motion.div
           key={questionNumber}
           className="space-y-8"
@@ -58,15 +64,15 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
           <div className="space-y-2">
             <div className="h-2 bg-muted rounded-full overflow-hidden">
               <motion.div 
-                className="h-full bg-gradient-to-r from-primary to-secondary"
+                className={`h-full ${progressBarColor}`} // 2. Aplica a cor dinâmica
                 initial={{ width: `${((questionNumber - 1) / totalQuestions) * 100}%` }}
                 animate={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: "easeOut" }} // 3. Animação voltou a ser rápida
               />
             </div>
           </div>
 
-          {/* Pergunta */}
+          {/* O resto do componente continua o mesmo... */}
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,7 +82,6 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
             {question}
           </motion.h2>
 
-          {/* Opções */}
           <motion.div
             className="space-y-3"
             variants={optionsContainerVariants}
@@ -119,8 +124,7 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
             ))}
           </motion.div>
 
-          {/* Botão Continuar */}
-          <div className="h-20 flex items-end justify-start"> {/* Container para evitar pulo de layout */}
+          <div className="h-20 flex items-end justify-start">
             <AnimatePresence>
               {selectedOption !== null && (
                 <motion.div

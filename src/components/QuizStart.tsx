@@ -54,7 +54,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
               variants={itemVariants}
               className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent !leading-tight"
             >
-              Qual é a chave que abre seu próximo nível?
+              Quem domina o tempo, domina a si mesmo.
             </motion.h1>
 
             {/* Container para os pilares com animação própria */}
@@ -93,7 +93,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                 variants={itemVariants}
                 className="text-lg text-foreground/80"
               >
-                Existe uma ordem oculta na Tríade do Tempo… e você só precisa de <span className="font-bold text-primary"><br />9 respostas</span> para revelar A SUA.
+                Existe uma ordem oculta na Trindade do Tempo… e você só precisa de <span className="font-bold text-primary"><br />9 respostas</span> para revelar A SUA.
               </motion.p>
 
               <motion.div
