@@ -1,45 +1,50 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Target, Zap, Sparkles, ArrowRight } from "lucide-react";
+import { Target, Zap, Sparkles, ArrowRight, BookOpen, ShieldCheck, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface QuizResultsProps {
   weakestTrinity: "execution" | "resilience" | "meaning";
 }
 
 const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
+  // SUA LÓGICA DE RESULTADOS CONTINUA EXATAMENTE A MESMA
   const results = {
     execution: {
       icon: Target,
       color: "primary",
-      title: "Seu Diagnóstico: Seu maior desafio está na EXECUÇÃO.",
+      title: "Seu maior desafio está na EXECUÇÃO.",
       description:
-        "Você tem boas ideias e grandes ambições, mas sente que está patinando no mesmo lugar. A procrastinação, a sobrecarga de tarefas e a dificuldade em manter o foco no dia a dia estão drenando sua energia e impedindo que seu potencial se transforme em resultados. A boa notícia é que isso não é uma falha de caráter, mas sim a falta de um sistema claro para agir.",
+        "Você tem boas ideias, mas sente que está patinando no mesmo lugar. A procrastinação e a sobrecarga de tarefas estão drenando sua energia e impedindo que seu potencial se transforme em resultados.",
       solution:
-        "O ebook 'A Trindade do Tempo' foi desenhado para você. A primeira Trindade, a da Execução (Clareza, Foco e Ação), vai te dar o passo a passo para transformar o caos em clareza, a distração em foco e a paralisia em ação imediata. Clique abaixo para destravar os poderes que vão tirar seus projetos do papel.",
+        "O ebook 'A Trindade do Tempo' foi desenhado para você. A primeira Trindade, a da Execução (Clareza, Foco e Ação), vai te dar o passo a passo para transformar o caos em clareza e a paralisia em ação imediata.",
       cta: "QUERO DOMINAR A EXECUÇÃO",
       gradient: "from-primary to-primary/70",
+      textColor: "text-primary",
     },
     resilience: {
       icon: Zap,
       color: "secondary",
-      title: "Seu Diagnóstico: Seu maior desafio está na RESILIÊNCIA.",
+      title: "Seu maior desafio está na RESILIÊNCIA.",
       description:
-        "Você é ótimo(a) em começar. O entusiasmo inicial te move, mas manter o ritmo a longo prazo é uma luta. A consistência falha, as emoções te tiram do curso e seus dias parecem uma batalha constante contra o caos. Você sente que tem potencial, mas a falta de estrutura e força mental te impede de construir resultados duradouros.",
+        "Você é ótimo(a) em começar, mas manter o ritmo a longo prazo é uma luta. A consistência falha e seus dias parecem uma batalha constante contra o caos, impedindo a construção de resultados duradouros.",
       solution:
-        "O coração do ebook 'A Trindade do Tempo' fala diretamente com você. A segunda Trindade, a da Resiliência (Consistência, Disciplina Emocional e Gestão do Tempo), vai te ensinar a construir sistemas à prova de falhas, a dominar suas emoções e a gerenciar seu tempo como um verdadeiro arquiteto da sua vida. Clique abaixo para construir a força que te levará até o fim.",
+        "O coração do ebook 'A Trindade do Tempo' fala diretamente com você. A segunda Trindade, a da Resiliência (Consistência, Disciplina Emocional e Gestão do Tempo), vai te ensinar a construir sistemas à prova de falhas e a dominar suas emoções.",
       cta: "QUERO CONSTRUIR MINHA RESILIÊNCIA",
       gradient: "from-secondary to-secondary/70",
+      textColor: "text-secondary",
     },
     meaning: {
       icon: Sparkles,
       color: "accent",
-      title: "Seu Diagnóstico: Seu maior desafio está no SIGNIFICADO.",
+      title: "Seu maior desafio está no SIGNIFICADO.",
       description:
-        "Você é produtivo(a) e consegue realizar tarefas, mas, no fundo, sente um vazio. Você cumpre suas obrigações, mas falta um brilho nos olhos, uma direção que te inspire. Você pode estar subindo a escada do sucesso muito rápido, mas tem a sensação incômoda de que ela pode estar apoiada na parede errada.",
+        "Você é produtivo(a), mas no fundo, sente um vazio. Falta um brilho nos olhos, uma direção que te inspire. Você pode estar subindo a escada do sucesso, mas com a sensação de que ela está na parede errada.",
       solution:
-        "O ebook 'A Trindade do Tempo' vai te guiar na jornada mais importante. A terceira Trindade, a do Significado (Autoconhecimento, Propósito e Contribuição), é um mapa para você se reconectar com sua essência, descobrir seu 'porquê' e alinhar suas ações com uma vida autêntica e realizadora. Clique abaixo para encontrar a direção que vai dar sentido a todo o seu esforço.",
+        "O ebook 'A Trindade do Tempo' vai te guiar na jornada mais importante. A terceira Trindade, a do Significado (Autoconhecimento, Propósito e Contribuição), é um mapa para você se reconectar com sua essência e descobrir seu 'porquê'.",
       cta: "QUERO ENCONTRAR MEU SIGNIFICADO",
       gradient: "from-accent to-accent/70",
+      textColor: "text-accent",
     },
   };
 
@@ -47,61 +52,87 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
   const Icon = result.icon;
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-      <Card className="max-w-3xl w-full p-8 md:p-12 shadow-xl">
-        <div className="space-y-8 animate-in fade-in duration-700">
-          {/* Icon */}
-          <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br ${result.gradient} shadow-lg`}>
-            <Icon className="w-10 h-10 text-white" />
-          </div>
-
-          {/* Title */}
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">
-              {result.title}
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {result.description}
-            </p>
-          </div>
-
-          {/* Divider */}
-          <div className="border-t border-border" />
-
-          {/* Solution */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">
-              A Solução Está Aqui
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {result.solution}
-            </p>
-
-            {/* CTA Button */}
-            <Button
-              size="lg"
-              className={`w-full md:w-auto px-8 py-6 text-lg font-semibold bg-gradient-to-r ${result.gradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all group`}
-            >
-              {result.cta}
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-
-          {/* Trust indicators */}
-          <div className="grid md:grid-cols-3 gap-4 pt-6 border-t border-border">
-            <div className="text-center p-4">
-              <p className="text-2xl font-bold text-foreground">9</p>
-              <p className="text-sm text-muted-foreground">Poderes Revelados</p>
+    <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      <Card className="max-w-5xl w-full shadow-2xl overflow-hidden border-none">
+        <div className="grid md:grid-cols-2">
+          
+          {/* Coluna Esquerda: Elemento Gráfico (Mockup do Ebook) */}
+          <motion.div 
+            className={`hidden md:flex flex-col items-center justify-center p-12 bg-gradient-to-br ${result.gradient}`}
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <div className="text-center text-white mb-8">
+              <BookOpen className="mx-auto w-12 h-12 mb-4" />
+              <h3 className="text-2xl font-bold">A Trindade do Tempo</h3>
+              <p className="opacity-80">Seu guia prático para o domínio pessoal</p>
             </div>
-            <div className="text-center p-4">
-              <p className="text-2xl font-bold text-foreground">3</p>
-              <p className="text-sm text-muted-foreground">Trindades do Sucesso</p>
+            {/* Mockup visual do ebook */}
+            <div className="w-48 h-64 bg-white/90 rounded-lg shadow-2xl p-4 flex flex-col justify-between backdrop-blur-sm">
+                <div className="space-y-2">
+                    <div className="h-2 w-1/3 bg-gray-400 rounded"></div>
+                    <div className="h-2 w-full bg-gray-300 rounded"></div>
+                    <div className="h-2 w-2/3 bg-gray-300 rounded"></div>
+                </div>
+                <div className="flex justify-center items-center h-full">
+                    <Icon className={`w-16 h-16 ${result.textColor}`} />
+                </div>
+                <div className="h-2 w-1/2 bg-gray-400 rounded self-end"></div>
             </div>
-            <div className="text-center p-4">
-              <p className="text-2xl font-bold text-foreground">100%</p>
-              <p className="text-sm text-muted-foreground">Ação Prática</p>
+          </motion.div>
+
+          {/* Coluna Direita: Conteúdo do Resultado */}
+          <motion.div 
+            className="p-8 md:p-12"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          >
+            <div className="space-y-6">
+              <p className="font-semibold text-primary">Seu Diagnóstico Personalizado</p>
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground !leading-tight">
+                Seu maior desafio está na <span className={`bg-gradient-to-r ${result.gradient} bg-clip-text text-transparent`}>{result.title.split(' ').pop()?.replace('.', '')}</span>
+              </h1>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                {result.description}
+              </p>
+
+              {/* Seção da Solução (CTA) */}
+              <div className="p-6 bg-muted/50 rounded-lg space-y-4">
+                <h2 className="text-xl font-bold text-foreground">Como 'A Trindade do Tempo' vai te ajudar:</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  {result.solution}
+                </p>
+                <Button
+                  size="lg"
+                  className={`w-full px-8 py-7 text-lg font-semibold bg-gradient-to-r ${result.gradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all group`}
+                >
+                  {result.cta}
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+
+              {/* Indicadores de Confiança */}
+              <div className="grid grid-cols-3 gap-4 pt-4 text-center">
+                <div className="flex flex-col items-center">
+                  <Star className="w-6 h-6 text-yellow-500 mb-1" />
+                  <p className="font-bold text-foreground">9 Poderes</p>
+                  <p className="text-xs text-muted-foreground">Revelados</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <ShieldCheck className="w-6 h-6 text-green-500 mb-1" />
+                  <p className="font-bold text-foreground">Ação Prática</p>
+                  <p className="text-xs text-muted-foreground">Garantida</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <BookOpen className="w-6 h-6 text-blue-500 mb-1" />
+                  <p className="font-bold text-foreground">Guia Completo</p>
+                  <p className="text-xs text-muted-foreground">Passo a passo</p>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Card>
     </div>
