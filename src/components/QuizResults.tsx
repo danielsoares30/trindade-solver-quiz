@@ -8,7 +8,6 @@ interface QuizResultsProps {
 }
 
 const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
-  // SUA LÓGICA DE RESULTADOS CONTINUA EXATAMENTE A MESMA
   const results = {
     execution: {
       icon: Target,
@@ -50,13 +49,13 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
 
   const result = results[weakestTrinity];
   const Icon = result.icon;
+  const checkoutLink = "https://pay.kirvano.com/2fd2f53e-4c3f-4d53-848a-4d6ba8140d41";
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       <Card className="max-w-5xl w-full shadow-2xl overflow-hidden border-none">
         <div className="grid md:grid-cols-2">
           
-          {/* Coluna Esquerda: Elemento Gráfico (Mockup do Ebook) */}
           <motion.div 
             className={`hidden md:flex flex-col items-center justify-center p-12 bg-gradient-to-br ${result.gradient}`}
             initial={{ x: -100, opacity: 0 }}
@@ -68,7 +67,6 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
               <h3 className="text-2xl font-bold">A Trindade do Tempo</h3>
               <p className="opacity-80">Seu guia prático para o domínio pessoal</p>
             </div>
-            {/* Mockup visual do ebook */}
             <div className="w-48 h-64 bg-white/90 rounded-lg shadow-2xl p-4 flex flex-col justify-between backdrop-blur-sm">
                 <div className="space-y-2">
                     <div className="h-2 w-1/3 bg-gray-400 rounded"></div>
@@ -82,7 +80,6 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
             </div>
           </motion.div>
 
-          {/* Coluna Direita: Conteúdo do Resultado */}
           <motion.div 
             className="p-8 md:p-12"
             initial={{ x: 100, opacity: 0 }}
@@ -98,22 +95,23 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
                 {result.description}
               </p>
 
-              {/* Seção da Solução (CTA) */}
               <div className="p-6 bg-muted/50 rounded-lg space-y-4">
                 <h2 className="text-xl font-bold text-foreground">Como 'A Trindade do Tempo' vai te ajudar:</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   {result.solution}
                 </p>
                 <Button
+                  asChild
                   size="lg"
                   className={`w-full px-8 py-7 text-lg font-semibold bg-gradient-to-r ${result.gradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all group`}
                 >
-                  {result.cta}
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <a href={checkoutLink} target="_blank" rel="noopener noreferrer">
+                    {result.cta}
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
                 </Button>
               </div>
 
-              {/* Indicadores de Confiança */}
               <div className="grid grid-cols-3 gap-4 pt-4 text-center">
                 <div className="flex flex-col items-center">
                   <Star className="w-6 h-6 text-yellow-500 mb-1" />
