@@ -4,7 +4,8 @@ import QuizQuestion from "@/components/QuizQuestion";
 import TransitionScreen from "@/components/TransitionScreen";
 import QuizResults from "@/components/QuizResults";
 
-type QuizState = "start" | "question" | "transition" | "results";
+// 1. Adicionamos um novo estado para a transição final
+type QuizState = "start" | "question" | "transition" | "final-transition" | "results";
 
 interface Question {
   text: string;
@@ -128,19 +129,24 @@ const Index = () => {
       [trinity]: prev[trinity] + value,
     }));
 
-    // Check if we need a transition
     if (currentQuestionIndex === 2 || currentQuestionIndex === 5) {
       setQuizState("transition");
     } else if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
-      setQuizState("results");
+      // 2. Quando a última pergunta é respondida, vamos para a transição final
+      setQuizState("final-transition");
     }
   };
 
   const handleTransitionComplete = () => {
     setCurrentQuestionIndex((prev) => prev + 1);
     setQuizState("question");
+  };
+
+  // 3. Nova função para ser chamada após o carregamento final
+  const handleShowResults = () => {
+    setQuizState("results");
   };
 
   const getWeakestTrinity = (): "execution" | "resilience" | "meaning" => {
@@ -166,6 +172,17 @@ const Index = () => {
         title={transition.title}
         subtitle={transition.subtitle}
         onContinue={handleTransitionComplete}
+      />
+    );
+  }
+
+  // 4. Lógica para renderizar a tela de carregamento final
+  if (quizState === "final-transition") {
+    return (
+      <TransitionScreen
+        title="Calculando seu resultado..."
+        subtitle="Estamos analisando suas respostas para revelar seu maior desafio."
+        onContinue={handleShowResults}
       />
     );
   }
