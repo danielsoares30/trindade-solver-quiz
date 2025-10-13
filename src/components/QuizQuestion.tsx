@@ -41,12 +41,25 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
     }
   };
 
-  // --- INÍCIO DA ALTERAÇÃO ---
+  // --- INÍCIO DA ALTERAÇÃO DA PROGRESSÃO ---
 
-  // 1. Lógica para definir a cor da barra de progresso
-  const progressBarColor = questionNumber <= 3
-    ? "bg-gradient-to-r from-primary to-secondary" // Azul para perguntas 1 a 3
-    : "bg-gradient-to-r from-orange-500 to-amber-400"; // Laranja para as demais
+  // 1. Lógica para definir a cor da barra em 3 estágios de laranja
+  const getProgressBarColor = () => {
+    if (questionNumber <= 3) {
+      return "bg-gradient-to-r from-amber-400 to-orange-400"; // Laranja Claro
+    }
+    if (questionNumber <= 6) {
+      return "bg-gradient-to-r from-orange-500 to-red-500"; // Laranja Médio
+    }
+    return "bg-gradient-to-r from-red-600 to-rose-700"; // Laranja Escuro/Avermelhado
+  };
+
+  const progressBarColor = getProgressBarColor();
+
+  // 2. Lógica para o progresso da barra não chegar a 100%
+  // Usamos 'totalQuestions + 1' como denominador para que na última pergunta (9/10) o resultado seja 90%
+  const initialWidth = ((questionNumber - 1) / (totalQuestions + 1)) * 100;
+  const finalWidth = (questionNumber / (totalQuestions + 1)) * 100;
 
   // --- FIM DA ALTERAÇÃO ---
 
@@ -64,10 +77,10 @@ const QuizQuestion = ({ question, options, onAnswer, questionNumber, totalQuesti
           <div className="space-y-2">
             <div className="h-2 bg-muted rounded-full overflow-hidden">
               <motion.div 
-                className={`h-full ${progressBarColor}`} // 2. Aplica a cor dinâmica
-                initial={{ width: `${((questionNumber - 1) / totalQuestions) * 100}%` }}
-                animate={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
-                transition={{ duration: 0.5, ease: "easeOut" }} // 3. Animação voltou a ser rápida
+                className={`h-full ${progressBarColor}`} // Aplica a cor dinâmica
+                initial={{ width: `${initialWidth}%` }} // Usa a largura inicial calculada
+                animate={{ width: `${finalWidth}%` }} // Usa a largura final calculada
+                transition={{ duration: 0.5, ease: "easeOut" }}
               />
             </div>
           </div>

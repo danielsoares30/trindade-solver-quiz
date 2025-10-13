@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Compass, Gem, Puzzle, Sparkles } from "lucide-react";
+// 1. Apenas o ícone 'Sparkles' é necessário agora
+import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface QuizStartProps {
@@ -13,7 +14,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, // Anima os filhos com um pequeno atraso entre eles
+      staggerChildren: 0.1,
     },
   },
 };
@@ -23,21 +24,9 @@ const itemVariants = {
   visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
 };
 
-// Variantes para os estados iniciais e visíveis
-const pillarVariants = {
-  hidden: { scale: 0.5, opacity: 0 },
-  visible: { scale: 1, opacity: 1 },
-};
-
-// Objeto separado apenas para o efeito de hover
-const pillarHover = {
-  scale: 1.05,
-  transition: { type: "spring", stiffness: 300 },
-};
 const QuizStart = ({ onStart }: QuizStartProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-background overflow-hidden">
-      {/* Usamos motion.div como o container principal da animação */}
       <motion.div
         className="max-w-2xl w-full"
         variants={containerVariants}
@@ -46,9 +35,29 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
       >
         <Card className="p-8 md:p-12 shadow-2xl shadow-primary/10">
           <div className="text-center space-y-8">
-            <motion.div variants={itemVariants}>
-              
+            
+            {/* --- INÍCIO DA ALTERAÇÃO: Novo elemento gráfico --- */}
+            <motion.div
+              variants={itemVariants}
+              className="flex justify-center items-center gap-3 mb-4"
+            >
+              <Sparkles className="w-8 h-8 text-primary/60" />
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1], // Efeito de pulsação sutil
+                  opacity: [1, 0.8, 1],
+                  transition: {
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+              >
+                <Sparkles className="w-12 h-12 text-primary glow-primary" />
+              </motion.div>
+              <Sparkles className="w-8 h-8 text-primary/60" />
             </motion.div>
+            {/* --- FIM DA ALTERAÇÃO --- */}
 
             <motion.h1
               variants={itemVariants}
@@ -56,37 +65,6 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
             >
               Quem domina o tempo, domina a si mesmo.
             </motion.h1>
-
-            {/* Container para os pilares com animação própria */}
-            <motion.div
-              variants={containerVariants}
-              className="grid md:grid-cols-3 gap-4 pt-4"
-            >
-              <motion.div
-                variants={pillarVariants}
-                whileHover="hover"
-                className="flex flex-col items-center p-4 rounded-lg bg-primary/5 cursor-pointer"
-              >
-                <Puzzle className="w-8 h-8 text-primary mb-2" />
-                <p className="font-semibold text-primary/90">Execução</p>
-              </motion.div>
-              <motion.div
-                variants={pillarVariants}
-                whileHover="hover"
-                className="flex flex-col items-center p-4 rounded-lg bg-secondary/5 cursor-pointer"
-              >
-                <Gem className="w-8 h-8 text-secondary mb-2" />
-                <p className="font-semibold text-secondary/90">Resiliência</p>
-              </motion.div>
-              <motion.div
-                variants={pillarVariants}
-                whileHover="hover"
-                className="flex flex-col items-center p-4 rounded-lg bg-accent/5 cursor-pointer"
-              >
-                <Compass className="w-8 h-8 text-accent mb-2" />
-                <p className="font-semibold text-accent/90">Significado</p>
-              </motion.div>
-            </motion.div>
 
             <div className="pt-6 space-y-6">
               <motion.p
@@ -99,7 +77,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
               <motion.div
                 variants={itemVariants}
                 animate={{
-                  scale: [1, 1.03, 1], // Efeito de pulsação
+                  scale: [1, 1.03, 1],
                   transition: {
                     duration: 2,
                     repeat: Infinity,
@@ -115,13 +93,6 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                   Iniciar minha jornada
                 </Button>
               </motion.div>
-
-              <motion.p
-                variants={itemVariants}
-                className="text-sm text-muted-foreground pt-2"
-              >
-              
-              </motion.p>
             </div>
           </div>
         </Card>

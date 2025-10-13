@@ -11,39 +11,39 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
   const results = {
     execution: {
       icon: Target,
-      color: "primary",
       title: "Seu maior desafio está na EXECUÇÃO.",
       description:
         "Você tem boas ideias, mas sente que está patinando no mesmo lugar. A procrastinação e a sobrecarga de tarefas estão drenando sua energia e impedindo que seu potencial se transforme em resultados.",
       solution:
         "O ebook 'A Trindade do Tempo' foi desenhado para você. A primeira Trindade, a da Execução (Clareza, Foco e Ação), vai te dar o passo a passo para transformar o caos em clareza e a paralisia em ação imediata.",
       cta: "QUERO DOMINAR A EXECUÇÃO",
-      gradient: "from-primary to-primary/70",
-      textColor: "text-primary",
+      // --- MUDANÇA AQUI ---
+      gradient: "from-blue-600 to-cyan-500", // Gradiente azul vibrante
+      textColor: "text-blue-500",
     },
     resilience: {
       icon: Zap,
-      color: "secondary",
       title: "Seu maior desafio está na RESILIÊNCIA.",
       description:
         "Você é ótimo(a) em começar, mas manter o ritmo a longo prazo é uma luta. A consistência falha e seus dias parecem uma batalha constante contra o caos, impedindo a construção de resultados duradouros.",
       solution:
         "O coração do ebook 'A Trindade do Tempo' fala diretamente com você. A segunda Trindade, a da Resiliência (Consistência, Disciplina Emocional e Gestão do Tempo), vai te ensinar a construir sistemas à prova de falhas e a dominar suas emoções.",
       cta: "QUERO CONSTRUIR MINHA RESILIÊNCIA",
-      gradient: "from-secondary to-secondary/70",
-      textColor: "text-secondary",
+      // --- MUDANÇA AQUI ---
+      gradient: "from-green-500 to-emerald-500", // Gradiente verde vibrante
+      textColor: "text-green-500",
     },
     meaning: {
       icon: Sparkles,
-      color: "accent",
       title: "Seu maior desafio está no SIGNIFICADO.",
       description:
         "Você é produtivo(a), mas no fundo, sente um vazio. Falta um brilho nos olhos, uma direção que te inspire. Você pode estar subindo a escada do sucesso, mas com a sensação de que ela está na parede errada.",
       solution:
         "O ebook 'A Trindade do Tempo' vai te guiar na jornada mais importante. A terceira Trindade, a do Significado (Autoconhecimento, Propósito e Contribuição), é um mapa para você se reconectar com sua essência e descobrir seu 'porquê'.",
       cta: "QUERO ENCONTRAR MEU SIGNIFICADO",
-      gradient: "from-accent to-accent/70",
-      textColor: "text-accent",
+      // --- MUDANÇA AQUI ---
+      gradient: "from-orange-500 to-amber-500", // Gradiente laranja vibrante
+      textColor: "text-orange-500",
     },
   };
 
@@ -103,7 +103,8 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
                 <Button
                   asChild
                   size="lg"
-                  className={`w-full px-8 py-7 text-lg font-semibold bg-gradient-to-r ${result.gradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all group`}
+                  // --- MUDANÇA AQUI ---
+                  className={`w-full px-8 py-7 text-lg font-semibold text-white bg-gradient-to-r ${result.gradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all group`}
                 >
                   <a href={checkoutLink} target="_blank" rel="noopener noreferrer">
                     {result.cta}
