@@ -49,7 +49,7 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
 
   const result = results[weakestTrinity];
   const Icon = result.icon;
-  const checkoutLink = "https://pay.kirvano.com/2fd2f53e-4c3f-4d53-848a-4d6ba8140d41";
+  const checkoutLink = "https://pay.kirvano.com/774c7e72-192e-446c-b4d7-7a0dd50e139a";
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
