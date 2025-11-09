@@ -90,7 +90,7 @@ const QuizStart = ({ onStart }: QuizStartProps) => {
                   size="lg"
                   className="w-full md:w-auto px-10 py-7 text-xl font-bold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:scale-105"
                 >
-                  Iniciar minha jornada
+                  Iniciar 
                 </Button>
               </motion.div>
             </div>
