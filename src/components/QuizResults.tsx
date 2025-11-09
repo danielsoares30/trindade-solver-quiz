@@ -17,8 +17,7 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
       solution:
         "O ebook 'A Trindade do Tempo' foi desenhado para você. A primeira Trindade, a da Execução (Clareza, Foco e Ação), vai te dar o passo a passo para transformar o caos em clareza e a paralisia em ação imediata.",
       cta: "QUERO DOMINAR A EXECUÇÃO",
-      // --- MUDANÇA AQUI ---
-      gradient: "from-blue-600 to-cyan-500", // Gradiente azul vibrante
+      gradient: "from-blue-600 to-cyan-500", 
       textColor: "text-blue-500",
     },
     resilience: {
@@ -29,8 +28,7 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
       solution:
         "O coração do ebook 'A Trindade do Tempo' fala diretamente com você. A segunda Trindade, a da Resiliência (Consistência, Disciplina Emocional e Gestão do Tempo), vai te ensinar a construir sistemas à prova de falhas e a dominar suas emoções.",
       cta: "QUERO CONSTRUIR MINHA RESILIÊNCIA",
-      // --- MUDANÇA AQUI ---
-      gradient: "from-green-500 to-emerald-500", // Gradiente verde vibrante
+      gradient: "from-green-500 to-emerald-500", 
       textColor: "text-green-500",
     },
     meaning: {
@@ -41,19 +39,19 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
       solution:
         "O ebook 'A Trindade do Tempo' vai te guiar na jornada mais importante. A terceira Trindade, a do Significado (Autoconhecimento, Propósito e Contribuição), é um mapa para você se reconectar com sua essência e descobrir seu 'porquê'.",
       cta: "QUERO ENCONTRAR MEU SIGNIFICADO",
-      // --- MUDANÇA AQUI ---
-      gradient: "from-orange-500 to-amber-500", // Gradiente laranja vibrante
+      gradient: "from-orange-500 to-amber-500", 
       textColor: "text-orange-500",
     },
   };
 
   const result = results[weakestTrinity];
   const Icon = result.icon;
-  const checkoutLink = "https://pay.kirvano.com/774c7e72-192e-446c-b4d7-7a0dd50e139a";
+  const checkoutLink = "https://pay.kirvano.com/2fd2f53e-4c3f-4d53-848a-4d6ba8140d41";
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-      <Card className="max-w-5xl w-full shadow-2xl overflow-hidden border-none">
+      {/* --- MUDANÇA 1: max-w-full no mobile, max-w-5xl no desktop --- */}
+      <Card className="max-w-full md:max-w-5xl w-full shadow-2xl overflow-hidden border-none">
         <div className="grid md:grid-cols-2">
           
           <motion.div 
@@ -88,7 +86,8 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
           >
             <div className="space-y-6">
               <p className="font-semibold text-primary">Seu Diagnóstico Personalizado</p>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground !leading-tight">
+              {/* --- MUDANÇA 2: Ajuste no tamanho da fonte H1 para mobile --- */}
+              <h1 className="text-2xl md:text-4xl font-bold text-foreground !leading-tight">
                 Seu maior desafio está na <span className={`bg-gradient-to-r ${result.gradient} bg-clip-text text-transparent`}>{result.title.split(' ').pop()?.replace('.', '')}</span>
               </h1>
               <p className="text-base text-muted-foreground leading-relaxed">
@@ -103,8 +102,8 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
                 <Button
                   asChild
                   size="lg"
-                  // --- MUDANÇA AQUI ---
-                  className={`w-full px-8 py-7 text-lg font-semibold text-white bg-gradient-to-r ${result.gradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all group`}
+                  // --- MUDANÇA 3: Adiciona text-wrap para quebra de linha no botão ---
+                  className={`w-full px-8 py-7 text-lg font-semibold text-white bg-gradient-to-r ${result.gradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all group text-wrap`}
                 >
                   <a href={checkoutLink} target="_blank" rel="noopener noreferrer">
                     {result.cta}
@@ -113,20 +112,22 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
                 </Button>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 pt-4 text-center">
+              {/* --- MUDANÇA 4: Grid com ajuste de espaçamento e possível empilhamento para mobile --- */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 pt-4 text-center">
                 <div className="flex flex-col items-center">
                   <Star className="w-6 h-6 text-yellow-500 mb-1" />
-                  <p className="font-bold text-foreground">9 Poderes</p>
+                  <p className="font-bold text-foreground text-sm">9 Poderes</p> {/* Ajuste de fonte */}
                   <p className="text-xs text-muted-foreground">Revelados</p>
                 </div>
                 <div className="flex flex-col items-center">
                   <ShieldCheck className="w-6 h-6 text-green-500 mb-1" />
-                  <p className="font-bold text-foreground">Ação Prática</p>
+                  <p className="font-bold text-foreground text-sm">Ação Prática</p> {/* Ajuste de fonte */}
                   <p className="text-xs text-muted-foreground">Garantida</p>
                 </div>
-                <div className="flex flex-col items-center">
+                {/* O terceiro item agora se ajusta melhor ou some em telas pequenas, dependendo do design */}
+                <div className="flex flex-col items-center col-span-2 md:col-span-1 mt-4 md:mt-0"> {/* Ajustado para ocupar 2 colunas e empilhar no mobile, ou 1 no desktop */}
                   <BookOpen className="w-6 h-6 text-blue-500 mb-1" />
-                  <p className="font-bold text-foreground">Guia Completo</p>
+                  <p className="font-bold text-foreground text-sm">Guia Completo</p> {/* Ajuste de fonte */}
                   <p className="text-xs text-muted-foreground">Passo a passo</p>
                 </div>
               </div>
