@@ -48,7 +48,7 @@ const dotVariants: Variants = {
   },
 };
 
-const TransitionScreen = ({ title, subtitle, onContinue, duration = 3000 }: TransitionScreenProps) => { // Ajustei duration para 3000ms como padrão para o quiz
+const TransitionScreen = ({ title, subtitle, onContinue, duration = 6000 }: TransitionScreenProps) => { // Ajustei duration para 3000ms como padrão para o quiz
   useEffect(() => {
     const timer = setTimeout(() => {
       onContinue();
