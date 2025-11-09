@@ -13,9 +13,9 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
       icon: Target,
       title: "Seu maior desafio está na EXECUÇÃO.",
       description:
-        "Você tem boas ideias, mas sente que está patinando no mesmo lugar. A procrastinação e a sobrecarga de tarefas estão drenando sua energia e impedindo que seu potencial se transforme em resultados.",
+        "Apesar de ter boas ideias, a procrastinação e a sobrecarga de tarefas te impedem de transformar seu potencial em resultados.",
       solution:
-        "O ebook 'A Trindade do Tempo' foi desenhado para você. A primeira Trindade, a da Execução (Clareza, Foco e Ação), vai te dar o passo a passo para transformar o caos em clareza e a paralisia em ação imediata.",
+        "Este ebook foi feito para você. Com a Trindade da Execução (Clareza, Foco e Ação), você terá o mapa definitivo para transformar o caos em clareza e a indecisão em ação poderosa.",
       cta: "QUERO DOMINAR A EXECUÇÃO",
       gradient: "from-blue-600 to-cyan-500", 
       textColor: "text-blue-500",
@@ -24,9 +24,9 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
       icon: Zap,
       title: "Seu maior desafio está na RESILIÊNCIA.",
       description:
-        "Você é ótimo(a) em começar, mas manter o ritmo a longo prazo é uma luta. A consistência falha e seus dias parecem uma batalha constante contra o caos, impedindo a construção de resultados duradouros.",
+        "Você é ótimo(a) em começar, mas sua dificuldade em manter a consistência e o ritmo a longo prazo te impede de construir resultados duradouros.",
       solution:
-        "O coração do ebook 'A Trindade do Tempo' fala diretamente com você. A segunda Trindade, a da Resiliência (Consistência, Disciplina Emocional e Gestão do Tempo), vai te ensinar a construir sistemas à prova de falhas e a dominar suas emoções.",
+        "A Trindade da Resiliência é o coração deste ebook. Com ela, você aprenderá a construir sistemas que realmente funcionam e a ter controle total sobre suas emoções.",
       cta: "QUERO CONSTRUIR MINHA RESILIÊNCIA",
       gradient: "from-green-500 to-emerald-500", 
       textColor: "text-green-500",
@@ -35,9 +35,9 @@ const QuizResults = ({ weakestTrinity }: QuizResultsProps) => {
       icon: Sparkles,
       title: "Seu maior desafio está no SIGNIFICADO.",
       description:
-        "Você é produtivo(a), mas no fundo, sente um vazio. Falta um brilho nos olhos, uma direção que te inspire. Você pode estar subindo a escada do sucesso, mas com a sensação de que ela está na parede errada.",
+        "Apesar de ser produtivo(a), você sente um vazio e falta de inspiração, como se estivesse perseguindo os objetivos errados.",
       solution:
-        "O ebook 'A Trindade do Tempo' vai te guiar na jornada mais importante. A terceira Trindade, a do Significado (Autoconhecimento, Propósito e Contribuição), é um mapa para você se reconectar com sua essência e descobrir seu 'porquê'.",
+        "O ebook usa a Trindade do Significado para te ajudar a encontrar seu 'porquê' e se reconectar com sua essência.",
       cta: "QUERO ENCONTRAR MEU SIGNIFICADO",
       gradient: "from-orange-500 to-amber-500", 
       textColor: "text-orange-500",
